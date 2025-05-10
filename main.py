@@ -1,6 +1,6 @@
-def main():
-    print("Hello from ecosentry!")
+from server import mcp 
+
 
 
 if __name__ == "__main__":
-    main()
+    mcp.run()

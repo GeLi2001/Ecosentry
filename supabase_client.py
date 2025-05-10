@@ -14,10 +14,9 @@ def upload_image(image_path: str) -> str:
     with open(image_path, "rb") as f:
         file_data = f.read()
     # Upload the file to the 'images' bucket
-    supabase.storage.from_("imagedb").upload(object_key, file_data)
+    supabase.storage.from_("imagedb").upload(object_key, file_data, file_options={"upsert": "true"})
 
     # Get the public URL for the uploaded file
-    public_url = supabase.storage.from_("images").get_public_url(object_key)
+    public_url = supabase.storage.from_("imagedb").get_public_url(object_key)
     return public_url
 
-upload_image("/Users/lige/Desktop/avatar.jpeg")
